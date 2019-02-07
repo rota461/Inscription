@@ -4,12 +4,13 @@ import os
 
 class Settings(object):
     def __init__(self):
-        self.cdir = os.getcwd()
+        self.cdir = os.path.dirname(os.path.abspath(__file__))
         self.config = configparser.ConfigParser()
-        
+
         self.PATH = []
 
-    def read_config(self):
-        conf_path = os.path.join(self.cdir, 'config.ini')
+    def read_config(self, path):
+        conf_path = os.path.join(path, 'config.ini')
         self.config.read(conf_path)
+
         self.PATH = self.config['PATH'] 

@@ -12,7 +12,8 @@ class TestSettings(object):
         settings = Settings()
 
         expected = "PASS"
-        settings.read_config()
+        chdir = os.path.dirname(os.path.abspath(__file__))
+        settings.read_config(chdir)
         actual = settings.PATH
 
         assert actual['TEST'] == expected
