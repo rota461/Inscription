@@ -7,14 +7,15 @@ from inscription.settings import Settings
 class Loader(object):
 
     def md_list(self, path):
-        print(path)
         path = Path(path)
         md_list = path.glob('*.md')
         md_list = [os.path.basename(x) for x in md_list]
         return md_list
 
     def template_list(self, path):
-        template_list = glob.glob(path + '*_template.html')
+        path = Path(path)
+        template_list = path.glob('*_template.html')
+        template_list = [os.path.basename(x) for x in template_list]
         return template_list
 
     def md_sorted_list(self, path, count):
