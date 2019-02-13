@@ -11,8 +11,8 @@ from inscription.loader import Loader
 class TestLoader(object):
 
     def test_md_list(self):
-        expected_all = ['3_test3.md','2_test2.md','1_test1.md']
-        expected_top2 = ['3_test3.md','2_test2.md']
+        expected_all = ['20190213_3_test3.md','20190213_2_test2.md','20190213_1_test1.md']
+        expected_top2 = ['20190213_3_test3.md','20190213_2_test2.md']
         loader = Loader()
 
         chdir = os.path.dirname(os.path.abspath(__file__))
