@@ -8,6 +8,7 @@ class Loader(object):
 
     def md_list(self, path, count):
         path = Path(path)
+        # entries or articles name must be yyyymmdd_serial_title.md.
         md_list = path.glob('*_*_*.md')
         md_list = [os.path.basename(x) for x in md_list]
         md_list = sorted(md_list, reverse=True)
@@ -23,5 +24,13 @@ class Loader(object):
         template_list = [os.path.basename(x) for x in template_list]
         return template_list
 
-    def entries_directory_list(self):
-        return 0
+    def entries_dir_list(self, path):
+        path = Path(path)
+        tmp_list = path.glob('*')
+        dir_list = []
+        print(dir_list)
+        for x in tmp_list:
+            if os.path.isdir(x):
+                dir_list.append(os.path.basename(x))
+        dir_list = sorted(dir_list, reverse=True)
+        return dir_list

@@ -34,3 +34,14 @@ class TestLoader(object):
         actual = loader.template_list(path)
 
         assert actual == expected
+
+    def test_entries_dir_list(self):
+        expected = ['201903', '201902', '201901']
+        loader = Loader()
+
+        chdir = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(chdir, 'contents\\entries\\')
+        
+        actual = loader.entries_dir_list(path)
+
+        assert actual == expected
