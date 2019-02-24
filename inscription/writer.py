@@ -6,15 +6,6 @@ import markdown
 
 from pathlib import Path
 
-class Article(object):
-    
-    content = ''
-    datetime = ''
-
-    def __init__(self, md, datetime):
-        self.content = md
-        self.datetime = datetime
-
 def convert_md(file):
     file = open(file, encoding='utf-8')
     text = file.read()

@@ -18,20 +18,12 @@ class TestLoader(object):
         path = os.path.join(chdir,'contents\\articles\\')
 
         actual_all = inscription.loader.md_list(path, -1)
+        actual_all = [os.path.basename(x) for x in actual_all]
         actual_top2 = inscription.loader.md_list(path, 2)
+        actual_top2 = [os.path.basename(x) for x in actual_top2]
           
         assert actual_all == expected_all
         assert actual_top2 == expected_top2
-
-    def test_template_list(self):
-        expected = ['test1_template.html','test2_template.html','test3_template.html']
-
-        chdir = os.path.dirname(os.path.abspath(__file__))
-        path = os.path.join(chdir, 'templates\\')
-        
-        actual = inscription.loader.template_list(path)
-
-        assert actual == expected
 
     def test_entries_dir_list(self):
         expected = ['201903', '201902', '201901']
@@ -40,5 +32,6 @@ class TestLoader(object):
         path = os.path.join(chdir, 'contents\\entries\\')
         
         actual = inscription.loader.entries_dir_list(path)
+        actual = [os.path.basename(x) for x in actual]
 
         assert actual == expected

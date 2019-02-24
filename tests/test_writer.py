@@ -6,7 +6,8 @@ import pytest
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-import inscription.writer
+from inscription import writer
+from inscription.editor import Article
 
 class TestWriter(object):
 
@@ -17,7 +18,7 @@ class TestWriter(object):
         file = 'contents\\articles\\20190213_1_test1.md'
         file_path = os.path.join(chdir, file)
         
-        actual = inscription.writer.convert_md(file_path)
+        actual = writer.convert_md(file_path)
 
         assert actual == expected
 
@@ -29,12 +30,12 @@ class TestWriter(object):
         template = 'test1_template.html'
 
         articles = []
-        article1 = inscription.writer.Article('<h1>Test1</h1>\n<p>test</p>', '2019/02/01')
-        article2 = inscription.writer.Article('<h1>Test2</h1>\n<p>test</p>', '2019/02/02')
+        article1 = Article('<h1>Test1</h1>\n<p>test</p>', '2019/02/01')
+        article2 = Article('<h1>Test2</h1>\n<p>test</p>', '2019/02/02')
 
         articles.append(article1)
         articles.append(article2)
 
-        actual = inscription.writer.write_blog(articles,template, templates_path)
+        actual = writer.write_blog(articles,template, templates_path)
 
         assert actual == expected
