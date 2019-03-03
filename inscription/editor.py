@@ -3,9 +3,9 @@ import os
 import jinja2
 from pathlib import Path
 
-from inscription import settings
-from inscription import loader
-from inscription import writer
+from . import settings
+from . import loader
+from . import writer
 
 # facade class
 
