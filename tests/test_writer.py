@@ -15,7 +15,7 @@ class TestWriter(object):
         expected = '<h1>test</h1>'
         
         chdir = os.path.dirname(os.path.abspath(__file__))
-        file = 'contents\\articles\\20190213_1_test1.md'
+        file = 'contents/articles/20190213_1_test1.md'.replace('/',os.path.sep)
         file_path = os.path.join(chdir, file)
         
         actual = writer.convert_md(file_path)

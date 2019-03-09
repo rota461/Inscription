@@ -15,7 +15,7 @@ class TestLoader(object):
         expected_top2 = ['20190213_3_test3.md','20190213_2_test2.md']
 
         chdir = os.path.dirname(os.path.abspath(__file__))
-        path = os.path.join(chdir,'contents\\articles\\')
+        path = os.path.join(chdir,'contents/articles/').replace('/', os.path.sep)
 
         actual_all = inscription.loader.md_list(path, -1)
         actual_all = [os.path.basename(x) for x in actual_all]
@@ -29,7 +29,7 @@ class TestLoader(object):
         expected = ['201903', '201902', '201901']
 
         chdir = os.path.dirname(os.path.abspath(__file__))
-        path = os.path.join(chdir, 'contents\\entries\\')
+        path = os.path.join(chdir, 'contents/entries/').replace('/', os.path.sep)
         
         actual = inscription.loader.entries_dir_list(path)
         actual = [os.path.basename(x) for x in actual]

@@ -20,8 +20,8 @@ class Editor(object):
         self.settings = settings
 
     def write_blog(self):
-        entries_dir = self.settings.PATH['entries']
-        template_dir = self.settings.PATH['templates']
+        entries_dir = self.settings.PATH['entries'].replace('/', os.path.sep)
+        template_dir = self.settings.PATH['templates'].replace('/', os.path.sep)
         
         template = self.settings.TEMPLATE['blog']
 

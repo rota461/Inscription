@@ -23,7 +23,7 @@ class TestRetoucher(object):
 
     def test_get_exif(self):
         chdir = os.path.abspath(os.path.dirname(__file__))
-        img = Image.open(chdir + '\\images\\IMG_0486.jpg')
+        img = Image.open(chdir + '/images/IMG_0486.JPG'.replace('/',os.path.sep))
         exif = inscription.retoucher.get_exif(img)
 
         expected = 'Canon EOS M6'
