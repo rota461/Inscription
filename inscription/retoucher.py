@@ -1,8 +1,23 @@
+import os
+
 from PIL import Image
 from PIL.ExifTags import TAGS
 
-def calc_height(pic_width, pic_height, width):
-    return round(width / pic_width * pic_height,3)
+#from . import settings
+
+class ImgData(object):
+    def __init__(self, img_name,width, height, exif):
+        self.img_name = img_name
+        self.description = exif['ImageDescription']
+        self.width = width
+        self.height = height
+        self.model = exif['Model']
+        self.lens_model = exif['LensModel']
+        self.f = exif['FNumber'][0] / exif['FNumber'][1]
+        self.iso = exif['ISOSpeedRatings'] 
+
+def calc_height(img_width, img_height, width):
+    return round(width / img_width * img_height,3)
 
 def get_exif(img):
     exif = img._getexif()
@@ -15,3 +30,21 @@ def get_exif(img):
 
     return exif_table
 
+class Retoucher(object):
+    def __init__(self, settings):
+        self.settings = settings
+
+    def generate_image_data(self, img_name):
+        img = Image.open(self.settings.PATH['images'].replace('/', os.path.sep) + img_name+'.JPG')
+
+        exif = get_exif(img)
+
+        img_width = img.size[0]
+        img_height = img.size[1]
+        width = float(self.settings.IMG['width'])
+        height = calc_height(img_width, img_height, width)
+
+        img_data = ImgData(img_name, width, height, exif)
+        img.close()
+
+        return img_data
