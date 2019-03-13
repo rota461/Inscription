@@ -6,7 +6,7 @@ from PIL.ExifTags import TAGS
 #from . import settings
 
 class ImgData(object):
-    def __init__(self, img_name,width, height, exif):
+    def __init__(self, img_name, width, height, exif):
         self.img_name = img_name
         self.description = exif['ImageDescription']
         self.width = width
@@ -29,6 +29,20 @@ def get_exif(img):
         exif_table[tag] = value
 
     return exif_table
+
+# set image height that will use in template.
+def set_image_height(img_list):
+    MARGIN = 20
+    odd = 0
+    even = 0
+    for index, img in enumerate(img_list):
+        tmp = img.height + MARGIN
+        if(index % 2 == 1):
+            img.height = odd
+            odd += tmp
+        else:
+            img.height = even
+            even += tmp
 
 class Retoucher(object):
     def __init__(self, settings):

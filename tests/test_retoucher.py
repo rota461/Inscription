@@ -78,3 +78,34 @@ class TestRetoucher(object):
         assert actual_lens_model == expected_lens_model
         assert actual_f == expected_f
         assert actual_iso == expected_iso
+
+    def test_set_image_height(self):
+        
+        class IMG(object):
+            def __init__(self, height):
+                self.height = height
+
+        img_list = [IMG(100), IMG(200), IMG(300), IMG(400), IMG(500), IMG(600)]
+
+        inscription.retoucher.set_image_height(img_list)
+
+        expected = 0
+        expected2 = 0
+        expected3 = 120
+        expected4 = 220
+        expected5 = 440
+        expected6 = 640
+
+        actual = img_list[0].height
+        actual2 = img_list[1].height
+        actual3 = img_list[2].height
+        actual4 = img_list[3].height
+        actual5 = img_list[4].height
+        actual6 = img_list[5].height
+
+        assert actual == expected
+        assert actual2 == expected2
+        assert actual3 == expected3
+        assert actual4 == expected4
+        assert actual5 == expected5
+        assert actual6 == expected6
