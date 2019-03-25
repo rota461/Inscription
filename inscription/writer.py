@@ -25,3 +25,17 @@ def write_blog(articles, template, template_path):
     template = env.get_template(template)
 
     return template.render(articles=articles)
+
+def write_entries(articles, template, template_path):
+    loader = jinja2.FileSystemLoader(template_path)
+    env = jinja2.Environment(
+        loader = loader,
+        autoescape = jinja2.select_autoescape(['html'])
+    )
+    template = env.get_template(template)
+
+    html_list = []
+    for i in range(len(articles)):
+        html_list.append(template.render(article=articles[i]))
+
+    return html_list

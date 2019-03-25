@@ -30,8 +30,8 @@ class TestWriter(object):
         template = 'test1_template.html'
 
         articles = []
-        article1 = Article('<h1>Test1</h1>\n<p>test</p>', '2019/02/01')
-        article2 = Article('<h1>Test2</h1>\n<p>test</p>', '2019/02/02')
+        article1 = Article('<h1>Test1</h1>\n<p>test</p>', '2019/02/01', '20190201001')
+        article2 = Article('<h1>Test2</h1>\n<p>test</p>', '2019/02/02', '20190202001')
 
         articles.append(article1)
         articles.append(article2)
