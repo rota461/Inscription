@@ -11,6 +11,12 @@ if __name__ == "__main__":
 
     blog = editor.write_blog()
     index = editor.write_index()
+    entries, serials = editor.write_entry_pages()
+
+    for (entry, serial) in zip(entries, serials):
+        file = open(settings.PATH['output_entries'] + serial + '.html', 'w+')
+        file.write(entry)
+        file.close()
 
     file = open(settings.PATH['outputs'] + 'index.html', 'w+')
     file.write(index)
